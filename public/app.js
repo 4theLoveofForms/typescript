@@ -13,12 +13,14 @@ console.log('list', list);
 // add an event listener to the form
 form.addEventListener('submit', (e) => {
     e.preventDefault();
+    let values;
+    values = [tofrom.value, details.value, amount.valueAsNumber];
     let doc;
     if (type.value === 'invoice') {
-        doc = new Invoice(tofrom.value, details.value, amount.valueAsNumber);
+        doc = new Invoice(...values);
     }
     else {
-        doc = new Payment(tofrom.value, details.value, amount.valueAsNumber);
+        doc = new Payment(...values);
     }
     console.log(doc);
     list.render(doc, type.value, 'end');
@@ -55,3 +57,15 @@ const docFour = {
     data: ['bread', 'milk']
 };
 console.log(docThree, docFour);
+// tuples 
+// the type of data is fixed once it has been initilized
+let arr = ['ryu', 25, true];
+// arr = 'tits'
+let tup = ['ry', 25, true];
+// tup[0] = false // error
+tup[0] = 'other';
+let student;
+student = ['chun', 17232];
+// what we learned:
+// all the basic types, function types, aliases, classes, interfaces, modules and the DOM, 
+// Generics, enums, and tuples

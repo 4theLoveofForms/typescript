@@ -22,11 +22,14 @@ console.log('list', list);
 form.addEventListener('submit', (e: Event) => {
     e.preventDefault();
 
+    let values: [string, string, number] 
+    values = [tofrom.value, details.value, amount.valueAsNumber]
+
     let doc: HasFormatter;
     if (type.value === 'invoice') {
-      doc = new Invoice(tofrom.value, details.value, amount.valueAsNumber)
+      doc = new Invoice(...values)
     } else {
-      doc = new Payment(tofrom.value, details.value, amount.valueAsNumber)
+      doc = new Payment(...values)
     }
 
     console.log(doc);
@@ -76,3 +79,20 @@ const docFour: Resource<string[]> = {
 console.log(docThree, docFour);
 
 
+// tuples 
+// the type of data is fixed once it has been initilized
+
+let arr = ['ryu', 25, true]
+// arr = 'tits'
+ 
+let tup: [string, number, boolean] = ['ry', 25, true]
+// tup[0] = false // error
+tup[0] = 'other'
+
+let student: [string, number];
+student = ['chun', 17232];
+
+
+// what we learned:
+// all the basic types, function types, aliases, classes, interfaces, modules and the DOM, 
+// Generics, enums, and tuples
