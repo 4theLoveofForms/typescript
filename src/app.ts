@@ -33,3 +33,43 @@ form.addEventListener('submit', (e: Event) => {
     list.render(doc, type.value, 'end')
 
 })
+
+
+// Generics
+// <T> captures what ever properties are on an idem (any item) that we pass in
+// <T extends object> is specifically for an object 
+// <T extends {name: string} even more specific 
+const addUID = <T extends {name: string}>(obj: T) => {
+  let uid = Math.floor(Math.random() * 100)
+  return {...obj, uid}
+}
+
+let docOne = addUID({name: 'yoshi', age: 40})
+// let docTwo = addUID('hello')
+
+console.log(docOne);
+
+// with interfaces
+interface Resource<T> {
+  uid: number;
+  resourceName: string;
+  data: T;
+}
+// T is going to be what ever type we specify when we create an object that implements this resource.
+
+const docThree: Resource<object> = {
+  uid: 1,
+  resourceName: 'chap',
+  data: {name: 'guy'}
+}
+
+const docFour: Resource<string[]> = {
+  uid: 2,
+  resourceName: 'shoppingList',
+  data: ['bread', 'milk']
+}
+
+console.log(docThree, docFour);
+
+
+// Enums 
