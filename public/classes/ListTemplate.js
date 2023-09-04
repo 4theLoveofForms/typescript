@@ -4,9 +4,6 @@ export class ListTemplate {
     }
     render(item, heading, pos) {
         const li = document.createElement('li');
-        console.log('render', li);
-        console.log(heading);
-        console.log(item.format());
         const h4 = document.createElement('h4');
         h4.innerText = heading;
         li.append(h4);

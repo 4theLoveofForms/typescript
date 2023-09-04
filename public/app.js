@@ -23,3 +23,35 @@ form.addEventListener('submit', (e) => {
     console.log(doc);
     list.render(doc, type.value, 'end');
 });
+// Generics
+// <T> captures what ever properties are on an idem (any item) that we pass in
+// <T extends object> is specifically for an object 
+// <T extends {name: string} even more specific 
+const addUID = (obj) => {
+    let uid = Math.floor(Math.random() * 100);
+    return Object.assign(Object.assign({}, obj), { uid });
+};
+let docOne = addUID({ name: 'yoshi', age: 40 });
+// let docTwo = addUID('hello')
+console.log(docOne);
+// Enums 
+var ResourceType;
+(function (ResourceType) {
+    ResourceType[ResourceType["BOOK"] = 0] = "BOOK";
+    ResourceType[ResourceType["AUTHOR"] = 1] = "AUTHOR";
+    ResourceType[ResourceType["FILM"] = 2] = "FILM";
+    ResourceType[ResourceType["DIRECTOR"] = 3] = "DIRECTOR";
+    ResourceType[ResourceType["PERSON"] = 4] = "PERSON";
+})(ResourceType || (ResourceType = {}));
+// T is going to be what ever type we specify when we create an object that implements this resource.
+const docThree = {
+    uid: 1,
+    resourceName: ResourceType.DIRECTOR,
+    data: { name: 'guy' }
+};
+const docFour = {
+    uid: 2,
+    resourceName: ResourceType.BOOK,
+    data: ['bread', 'milk']
+};
+console.log(docThree, docFour);

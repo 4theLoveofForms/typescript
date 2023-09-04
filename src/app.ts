@@ -49,27 +49,30 @@ let docOne = addUID({name: 'yoshi', age: 40})
 
 console.log(docOne);
 
+
+// Enums 
+enum ResourceType { BOOK, AUTHOR, FILM, DIRECTOR, PERSON }
+
 // with interfaces
 interface Resource<T> {
   uid: number;
-  resourceName: string;
+  resourceName: ResourceType;
   data: T;
 }
 // T is going to be what ever type we specify when we create an object that implements this resource.
 
 const docThree: Resource<object> = {
   uid: 1,
-  resourceName: 'chap',
+  resourceName: ResourceType.DIRECTOR,
   data: {name: 'guy'}
 }
 
 const docFour: Resource<string[]> = {
   uid: 2,
-  resourceName: 'shoppingList',
+  resourceName: ResourceType.BOOK,
   data: ['bread', 'milk']
 }
 
 console.log(docThree, docFour);
 
 
-// Enums 
